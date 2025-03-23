@@ -147,6 +147,8 @@
             border-radius: 20px;
             padding: 5px 15px;
             transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
         }
 
         .logout-btn:hover {
@@ -165,9 +167,9 @@
 <body>
     <div class="user-greeting">
         <span>Welcome, <strong id="username">User</strong>!</span>
-        <a href="/login.html" class="logout-btn">
+        <button class="logout-btn">
             <i class="fas fa-sign-out-alt mr-1"></i> Logout
-        </a>
+        </button>
     </div>
 
     <div class="dashboard-container">
@@ -211,6 +213,12 @@
             if (storedUser) {
                 document.getElementById('username').textContent = storedUser;
             }
+
+            // Logout functionality
+            document.querySelector('.logout-btn').addEventListener('click', function () {
+                localStorage.removeItem('finbotUser');
+                window.location.href = '/login.html';
+            });
         });
     </script>
 </body>
